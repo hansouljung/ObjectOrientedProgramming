@@ -1,0 +1,122 @@
+FULL CREDIT
+===========
+
+QUESTION 1: Why is String[] args changed to a LinkedList in WordSearch.main? (Hint: Examine the WordSearch constructor!)
+
+The purpose is to provide more flexibility and to make it more easier to remove and modify the arguments
+
+
+
+QUESTION 2: How many puzzles did your machine need to solve with 1 thread to run for between 30 and 45 seconds: 
+
+1500
+
+
+
+QUESTION 3: Provide the output of 
+
+    time java WordSearch n 1000 ../puzzle??.txt 
+
+where n is 1 to 16 and 1000 is the number of puzzles specified in Question 2. NOTE: You can run all of these with a single bash command if you like (again, replace 1000 with your number of puzzles from Question 2):
+
+for i in {1..16} ; do time java WordSearch $i 1000 ../puzzle??.txt ; done
+
+Example Timing:
+
+ for i in {1..16} ; do time java WordSearch $i 1000 ../puzzle??.txt ; done
+1000 puzzles
+Thread 0: 0-999
+
+real	0m31.872s
+user	0m32.475s
+sys	0m0.224s
+
+1000 puzzles
+Thread 1: 500-999
+Thread 0: 0-499
+
+real	0m14.376s
+user	0m29.078s
+sys	0m0.229s
+
+...and so on
+
+
+
+YOUR Timing: 
+
+1500 puzzles with 1 threads
+Thread 0: 0-1499
+java WordSearch $i 1500 ../puzzle??.txt  36.66s user 0.25s system 101% cpu 36.369 total
+
+1500 puzzles with 2 threads
+Thread 0: 0-749
+Thread 1: 750-1499
+java WordSearch $i 1500 ../puzzle??.txt  38.58s user 0.22s system 201% cpu 19.270 total
+
+1500 puzzles with 3 threads
+Thread 0: 0-499
+Thread 2: 1000-1499
+Thread 1: 500-999
+java WordSearch $i 1500 ../puzzle??.txt  48.65s user 0.40s system 299% cpu 16.371 total.....
+
+
+
+
+
+
+
+QUESTION 3: Does adding more threads continue to speed up the program? Do more threads ever slow down the program even slightly?  Why or why not?
+
+
+Yes adding more threads continue to speed it up. However, threads can slow down the program even slightly if contention happens it can lead to conflicts and waiting, which can introduce delays and slow down the program.
+
+
+
+QUESTION 4: Does adding more threads increase the "system load" (sys), or is it constant regardless of the number of threads?  Why?
+
+
+It's increasing because it may lead to more time spent in kernel-level activities.
+
+
+
+BONUS
+=====
+
+QUESTION 5: Time your thread pool version of WordSearch exactly as you did for the full credit version. Post your timings here.
+
+YOUR Timing: 
+
+
+
+
+
+
+
+QUESTION 6: Is a thread pool faster, slower, or roughly equivalent in performance? 
+
+
+
+
+
+
+
+QUESTION 7: Compare your full credit and bonus solution code. Which do you believe is more supportable over a long lifetime of evolving hardware and environments?
+
+
+
+
+
+
+
+EXTREME BONUS
+=============
+
+QUESTION 8: Post your final timings here. (The "race" on Antares will determine the actual winner - this just lets me know you're competing!)
+
+
+
+
+
+
+
