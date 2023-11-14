@@ -206,6 +206,8 @@ std::ostream& operator<<(std::ostream& os, const Time& time)
     return os;
 }
 
+
+
 std::istream& operator>>(std::istream& is, Time& time)
 {
     char colon;
